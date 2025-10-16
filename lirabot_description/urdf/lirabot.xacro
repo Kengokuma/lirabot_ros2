@@ -1,0 +1,176 @@
+<?xml version="1.0" ?>
+<robot name="lirabot" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+<xacro:include filename="$(find lirabot_description)/urdf/materials.xacro" />
+<xacro:include filename="$(find lirabot_description)/urdf/lirabot.trans" />
+<xacro:include filename="$(find lirabot_description)/urdf/lirabot.gazebo" />
+
+<link name="base_footprint"/>
+<joint name="base_link_joint" type="fixed">
+  <parent link="base_footprint"/>
+  <child link="base_link"/>
+  <origin xyz="0 0 0.009" rpy="0 0 0"/>
+ </joint>
+
+<link name="base_link">
+  <inertial>
+    <origin xyz="-0.002172365932740349 -0.0008436056640299366 0.07287967201339762" rpy="0 0 0"/>
+    <mass value="6.211712403129365"/>
+    <inertia ixx="0.014889" iyy="0.020157" izz="0.025166" ixy="5.6e-05" iyz="0.00016" ixz="-0.000113"/>
+  </inertial>
+  <visual>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find lirabot_description)/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find lirabot_description)/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="wheel_left_forward_link_1">
+  <inertial>
+    <origin xyz="0.013345911946989336 0.03374212437903459 -0.04290282945810435" rpy="0 0 0"/>
+    <mass value="0.30797982883853386"/>
+    <inertia ixx="0.000139" iyy="0.000267" izz="0.000139" ixy="0.0" iyz="0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.044995 -0.074905 -0.032003" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find lirabot_description)/meshes/wheel_left_forward_link_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.044995 -0.074905 -0.032003" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find lirabot_description)/meshes/wheel_left_forward_link_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="wheel_right_forward_link_1">
+  <inertial>
+    <origin xyz="0.01333573391199245 -0.12373212438307696 0.10690454135726762" rpy="0 0 0"/>
+    <mass value="0.30797982860031553"/>
+    <inertia ixx="0.000139" iyy="0.000267" izz="0.000139" ixy="-0.0" iyz="-0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.044995 0.074905 -0.032003" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find lirabot_description)/meshes/wheel_right_forward_link_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.044995 0.074905 -0.032003" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find lirabot_description)/meshes/wheel_right_forward_link_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="wheel_right_backward_link_1">
+  <inertial>
+    <origin xyz="-0.07712107261745366 -0.033742124378334216 0.1069140413970133" rpy="0 0 0"/>
+    <mass value="0.3079798288624377"/>
+    <inertia ixx="0.000139" iyy="0.000267" izz="0.000139" ixy="0.0" iyz="-0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.044995 0.074905 -0.032003" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find lirabot_description)/meshes/wheel_right_backward_link_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.044995 0.074905 -0.032003" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find lirabot_description)/meshes/wheel_right_backward_link_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="wheel_left_backward_link_1">
+  <inertial>
+    <origin xyz="-0.07734170823817779 0.12373212438264627 -0.04290594592742581" rpy="0 0 0"/>
+    <mass value="0.30797982861500756"/>
+    <inertia ixx="0.000139" iyy="0.000267" izz="0.000139" ixy="-0.0" iyz="0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.044995 -0.074905 -0.032003" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find lirabot_description)/meshes/wheel_left_backward_link_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.044995 -0.074905 -0.032003" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find lirabot_description)/meshes/wheel_left_backward_link_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<joint name="wheel_left_forward_joint" type="continuous">
+  <origin xyz="0.044995 0.074905 0.032003" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="wheel_left_forward_link_1"/>
+  <axis xyz="0.0 1.0 0.0"/>
+</joint>
+
+<joint name="wheel_right_forward_joint" type="continuous">
+  <origin xyz="0.044995 -0.074905 0.032003" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="wheel_right_forward_link_1"/>
+  <axis xyz="0.0 1.0 0.0"/>
+</joint>
+
+<joint name="wheel_right_backward_joint" type="continuous">
+  <origin xyz="-0.044995 -0.074905 0.032003" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="wheel_right_backward_link_1"/>
+  <axis xyz="0.0 1.0 0.0"/>
+</joint>
+
+<joint name="wheel_left_backward_joint" type="continuous">
+  <origin xyz="-0.044995 0.074905 0.032003" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="wheel_left_backward_link_1"/>
+  <axis xyz="0.0 1.0 0.0"/>
+</joint>
+
+<link name="imu_link">
+  <inertial>
+    <mass value="0.01"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6"/>
+  </inertial>
+</link>
+
+<joint name="imu_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="imu_link"/>
+    <origin xyz="-0.05 0 0.08" rpy="0 0 0"/>
+</joint>
+
+<link name="base_scan">
+    <inertial>
+        <origin xyz="0 0 4" rpy="0 0 0"/>
+        <mass value="0.1"/>
+        <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6"/>
+    </inertial>
+</link>
+
+<joint name="lidar_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="base_scan"/>
+    <origin xyz="0.055 0 0.13" rpy="0 0 0"/>
+</joint>
+
+</robot>

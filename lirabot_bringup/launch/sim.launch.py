@@ -36,7 +36,7 @@ from launch_ros.actions import Node
 
 
 def generate_launch_description():
-    bringup_dir = get_package_share_directory('nav2_bringup')
+    bringup_dir = get_package_share_directory('lirabot_nav2')
     # Get the launch directory
     sim_dir = get_package_share_directory('lirabot_sim')
     desc_dir = get_package_share_directory('lirabot_description')

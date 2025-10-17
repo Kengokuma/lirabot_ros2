@@ -22,6 +22,8 @@ private:
   rclcpp::Subscription<sensor_msgs::msg::Joy>::SharedPtr joy_sub_;
   rclcpp::TimerBase::SharedPtr timer_;
   geometry_msgs::msg::Twist cmd_vel_;
+  double linear_scale_;
+  double angular_scale_;
 };
 
 }  // namespace lirabot_interface

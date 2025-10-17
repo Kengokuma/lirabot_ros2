@@ -11,12 +11,30 @@ find_package(rclcpp REQUIRED)
 find_package(sensor_msgs REQUIRED)
 find_package(geometry_msgs REQUIRED)
 find_package(rclcpp_components REQUIRED)
+find_package(tf2 REQUIRED)
+find_package(tf2_ros REQUIRED)
+find_package(nav_msgs REQUIRED)
 # uncomment the following section in order to fill in
 # further dependencies manually.
 # find_package(<dependency> REQUIRED)
 
 add_library(manual_controller SHARED
   src/manual_controller.cpp
+)
+
+add_executable(odom_to_tf_node src/odom_to_tf_node.cpp)
+
+ament_target_dependencies(odom_to_tf_node
+  rclcpp
+  nav_msgs
+  tf2
+  tf2_ros
+  geometry_msgs
+)
+
+install(TARGETS
+  odom_to_tf_node
+  DESTINATION lib/${PROJECT_NAME}
 )
 
 ament_target_dependencies(manual_controller
@@ -46,7 +64,9 @@ install(TARGETS manual_controller
   RUNTIME DESTINATION bin
 )
 
-install(DIRECTORY launch
+install(DIRECTORY 
+  launch
+  config
   DESTINATION share/${PROJECT_NAME}
 )
 

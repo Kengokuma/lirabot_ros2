@@ -11,6 +11,10 @@ ManualController::ManualController(const rclcpp::NodeOptions & options)
     "joy", 10, std::bind(&ManualController::joy_callback, this, std::placeholders::_1));
   timer_ = this->create_wall_timer(
     std::chrono::milliseconds(100), std::bind(&ManualController::publish_cmd_vel, this));
+  this->declare_parameter("linear_scale", 0.2);
+  this->declare_parameter("angular_scale", 4.0);
+  this->get_parameter("linear_scale", linear_scale_);
+  this->get_parameter("angular_scale", angular_scale_);
   cmd_vel_.linear.x = 0.0;
   cmd_vel_.linear.y = 0.0;
   cmd_vel_.linear.z = 0.0;
@@ -31,8 +35,8 @@ void ManualController::publish_cmd_vel()
 void ManualController::joy_callback(const sensor_msgs::msg::Joy::SharedPtr msg)
 {
   // Handle joystick input
-  cmd_vel_.linear.x = msg->axes[2];
-  cmd_vel_.angular.z = msg->axes[3] * 2;
+  cmd_vel_.linear.x = msg->axes[2] * linear_scale_;
+  cmd_vel_.angular.z = msg->axes[3] * angular_scale_;
 }
 
 }  // namespace lirabot_interface

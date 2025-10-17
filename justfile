@@ -22,7 +22,7 @@ deps: _cd
 
 # build packages
 build: _cd
-  colcon build --symlink-install
+  colcon build --symlink-install --parallel-workers 1
 
 # test packages
 test packages: _cd

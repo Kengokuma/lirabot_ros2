@@ -7,6 +7,7 @@ def generate_launch_description():
         Node(
             package='lirabot_interface',
             executable='manual_controller_node',
+            parameters=['/home/pi/lirabot_ros2/lirabot_interface/config/params.yaml'],
             output='screen'
         ),
         Node(

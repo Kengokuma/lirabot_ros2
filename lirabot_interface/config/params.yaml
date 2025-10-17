@@ -1,0 +1,4 @@
+manual_controller:
+  ros__parameters:
+    linear_scale: 0.2
+    angular_scale: 0.5

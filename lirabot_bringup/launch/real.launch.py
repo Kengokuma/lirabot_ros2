@@ -216,12 +216,15 @@ def generate_launch_description():
         }.items(),
     )
 
-    micro_ros_agent_cmd = Node(
-        package='micro_ros_agent',
-        executable='micro_ros_agent',
-        name='micro_ros_agent',
+    manual_control_cmd = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource(os.path.join(
+            'lirabot_interface', 'launch', 'manual.launch.py')))
+
+    odom_to_tf_broadcaster_cmd = Node(
+        package='lirabot_interface',    
+        executable='odom_to_tf_node',
+        name='odom_to_tf_node',
         output='screen',
-        arguments=['serial', '--dev', '/dev/ttyACM0', '--baud', '115200'],
     )
 
     # Create the launch description and populate
@@ -252,6 +255,7 @@ def generate_launch_description():
     ld.add_action(joint_state_publisher_gui_cmd)
     ld.add_action(joint_state_publisher_cmd)
     ld.add_action(bringup_cmd)
-    ld.add_action(micro_ros_agent_cmd)
+    ld.add_action(odom_to_tf_broadcaster_cmd)
+    ld.add_action(manual_control_cmd)
 
     return ld
